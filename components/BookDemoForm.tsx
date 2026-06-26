@@ -4,13 +4,13 @@ import { useState } from "react";
 import {
   Box,
   Stack,
+  SimpleGrid,
   Input,
   Textarea,
   Button,
   Text,
   Heading,
   Flex,
-  HStack,
   chakra,
 } from "@chakra-ui/react";
 import { CheckIcon } from "./icons";
@@ -20,12 +20,28 @@ type Status = "idle" | "submitting" | "success" | "error";
 type Fields = {
   name: string;
   email: string;
+  phone: string;
   organization: string;
   subject: string;
   message: string;
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+/** Loose international-friendly phone check: 10–15 digits, ignoring formatting. */
+function isValidPhone(value: string) {
+  const digits = value.replace(/\D/g, "");
+  return digits.length >= 10 && digits.length <= 15;
+}
+
+/** Formats input as a US phone number: (956) 555-0123 (caps at 10 digits). */
+function formatPhone(value: string) {
+  const digits = value.replace(/\D/g, "").slice(0, 10);
+  if (digits.length === 0) return "";
+  if (digits.length < 4) return `(${digits}`;
+  if (digits.length < 7) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+  return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+}
 
 function FieldLabel({ children, htmlFor }: { children: React.ReactNode; htmlFor: string }) {
   return (
@@ -52,6 +68,7 @@ export function BookDemoForm() {
   const [fields, setFields] = useState<Fields>({
     name: "",
     email: "",
+    phone: "",
     organization: "",
     subject: "",
     message: "",
@@ -70,9 +87,11 @@ export function BookDemoForm() {
     if (!fields.name.trim()) next.name = "Please enter your name.";
     if (!fields.email.trim()) next.email = "Please enter your email.";
     else if (!EMAIL_RE.test(fields.email)) next.email = "Enter a valid email address.";
+    if (!fields.phone.trim()) next.phone = "Please enter a phone number.";
+    else if (!isValidPhone(fields.phone)) next.phone = "Enter a valid phone number.";
     if (!fields.organization.trim()) next.organization = "Let us know your city or organization.";
     if (!fields.subject.trim()) next.subject = "Please add a subject.";
-    if (!fields.message.trim()) next.message = "Please tell us what you'd like to see.";
+    if (!fields.message.trim()) next.message = "Please let us know how we can help.";
     setErrors(next);
     return Object.keys(next).length === 0;
   }
@@ -150,23 +169,45 @@ export function BookDemoForm() {
       noValidate
     >
       <Stack gap="5">
-        <Stack gap="1.5">
-          <FieldLabel htmlFor="name">Name</FieldLabel>
-          <Input
-            id="name"
-            value={fields.name}
-            onChange={(e) => set("name", e.target.value)}
-            placeholder="Jane Rivera"
-            autoComplete="name"
-            aria-invalid={!!errors.name}
-            {...inputStyles}
-          />
-          {errors.name && (
-            <Text fontSize="xs" color="red.600">
-              {errors.name}
-            </Text>
-          )}
-        </Stack>
+        <SimpleGrid columns={{ base: 1, sm: 2 }} gap="4">
+          <Stack gap="1.5">
+            <FieldLabel htmlFor="name">Name</FieldLabel>
+            <Input
+              id="name"
+              value={fields.name}
+              onChange={(e) => set("name", e.target.value)}
+              placeholder="Jane Rivera"
+              autoComplete="name"
+              aria-invalid={!!errors.name}
+              {...inputStyles}
+            />
+            {errors.name && (
+              <Text fontSize="xs" color="red.600">
+                {errors.name}
+              </Text>
+            )}
+          </Stack>
+
+          <Stack gap="1.5">
+            <FieldLabel htmlFor="phone">Phone number</FieldLabel>
+            <Input
+              id="phone"
+              type="tel"
+              inputMode="tel"
+              value={fields.phone}
+              onChange={(e) => set("phone", formatPhone(e.target.value))}
+              placeholder="(956) 555-0123"
+              autoComplete="tel"
+              aria-invalid={!!errors.phone}
+              {...inputStyles}
+            />
+            {errors.phone && (
+              <Text fontSize="xs" color="red.600">
+                {errors.phone}
+              </Text>
+            )}
+          </Stack>
+        </SimpleGrid>
 
         <Stack gap="1.5">
           <FieldLabel htmlFor="email">Email</FieldLabel>
@@ -223,7 +264,7 @@ export function BookDemoForm() {
         </Stack>
 
         <Stack gap="1.5">
-          <FieldLabel htmlFor="message">What would you like to see?</FieldLabel>
+          <FieldLabel htmlFor="message">How can we help you?</FieldLabel>
           <Textarea
             id="message"
             value={fields.message}
@@ -272,11 +313,9 @@ export function BookDemoForm() {
           Book a demo
         </Button>
 
-        <HStack gap="2" color="fg.subtle">
-          <Text fontSize="xs">
-            We&apos;ll only use your details to schedule your demo.
-          </Text>
-        </HStack>
+        <Text fontSize="xs" color="fg.subtle" textAlign="center">
+          We&apos;ll only use your details to schedule your demo.
+        </Text>
       </Stack>
     </chakra.form>
   );

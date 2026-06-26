@@ -5,12 +5,19 @@ export const runtime = "nodejs";
 type DemoPayload = {
   name?: string;
   email?: string;
+  phone?: string;
   organization?: string;
   subject?: string;
   message?: string;
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+/** Loose international-friendly phone check: 10–15 digits, ignoring spaces/()-+./ */
+function isValidPhone(value: string) {
+  const digits = value.replace(/\D/g, "");
+  return digits.length >= 10 && digits.length <= 15;
+}
 
 function escapeHtml(value: string) {
   return value
@@ -37,15 +44,19 @@ export async function POST(request: Request) {
 
   const name = body.name?.trim() ?? "";
   const email = body.email?.trim() ?? "";
+  const phone = body.phone?.trim() ?? "";
   const organization = body.organization?.trim() ?? "";
   const subject = body.subject?.trim() ?? "";
   const message = body.message?.trim() ?? "";
 
-  if (!name || !email || !organization || !subject || !message) {
+  if (!name || !email || !phone || !organization || !subject || !message) {
     return NextResponse.json({ error: "All fields are required." }, { status: 400 });
   }
   if (!EMAIL_RE.test(email)) {
     return NextResponse.json({ error: "Please provide a valid email address." }, { status: 400 });
+  }
+  if (!isValidPhone(phone)) {
+    return NextResponse.json({ error: "Please provide a valid phone number." }, { status: 400 });
   }
 
   const apiKey = process.env.BREVO_API_KEY;
@@ -70,6 +81,7 @@ export async function POST(request: Request) {
     <h2>New City Connect demo request</h2>
     <p><strong>Name:</strong> ${escapeHtml(name)}</p>
     <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+    <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
     <p><strong>City / organization:</strong> ${escapeHtml(organization)}</p>
     <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
     <p><strong>Message:</strong><br/>${escapeHtml(message).replace(/\n/g, "<br/>")}</p>
@@ -79,6 +91,7 @@ export async function POST(request: Request) {
     "New City Connect demo request",
     `Name: ${name}`,
     `Email: ${email}`,
+    `Phone: ${phone}`,
     `City / organization: ${organization}`,
     `Subject: ${subject}`,
     `Message: ${message}`,

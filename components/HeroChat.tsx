@@ -203,12 +203,13 @@ export function HeroChat({ maxW = "440px" }: { maxW?: string }) {
         {/* messages */}
         <Box
           ref={scrollRef}
-          h={{ base: "300px", sm: "340px" }}
+          h={{ base: "260px", sm: "320px" }}
           overflow="hidden"
           px="4"
           py="5"
           display="flex"
           flexDirection="column"
+          justifyContent="flex-end"
           gap="3"
           css={{ scrollbarWidth: "none" }}
         >

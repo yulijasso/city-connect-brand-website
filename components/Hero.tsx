@@ -94,10 +94,16 @@ export function Hero() {
               {hero.subtitle}
             </Text>
 
-            <HStack gap="3" flexWrap="wrap" pt="1">
+            <Stack
+              direction={{ base: "column", sm: "row" }}
+              gap="3"
+              pt="1"
+              w={{ base: "full", sm: "auto" }}
+            >
               <Button
                 asChild
                 size="lg"
+                w={{ base: "full", sm: "auto" }}
                 bgGradient="to-r"
                 gradientFrom="#c23c5a"
                 gradientTo="#a8324d"
@@ -119,6 +125,7 @@ export function Hero() {
               <Button
                 asChild
                 size="lg"
+                w={{ base: "full", sm: "auto" }}
                 variant="outline"
                 rounded="l1"
                 px="7"
@@ -130,7 +137,7 @@ export function Hero() {
               >
                 <a href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
               </Button>
-            </HStack>
+            </Stack>
 
             <SimpleGrid columns={3} gap="4" pt="6" maxW="lg">
               {hero.stats.map((s) => (
