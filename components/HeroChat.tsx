@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Box, HStack, Flex, Text } from "@chakra-ui/react";
+import { Box, HStack, Stack, Flex, Text } from "@chakra-ui/react";
 import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 
 type Role = "assistant" | "user";
@@ -20,42 +20,60 @@ const CONVERSATIONS = [
     user: "¿Cuáles son los horarios del juzgado municipal?",
     answer:
       "El Juzgado Municipal de Pharr abre de lunes a viernes de 8 a.m. a 6 p.m. y cierra los fines de semana.",
-    sources: ["Municipal Court · City of Pharr", "+2 sources"],
+    sources: [
+      "Municipal Court | City Of Pharr",
+      "Court Hours & Holidays | City Of Pharr",
+    ],
     feedbackLabel: "¿Se resolvió tu pregunta?",
   },
   {
     user: "How do I pay my water bill online?",
     answer:
       "You can pay your water bill anytime through the city's utility portal, or by phone 24/7. Want the direct link?",
-    sources: ["Utility Billing · City of Pharr", "Pay Online"],
+    sources: [
+      "Pay Your Water Bill | City Of Pharr",
+      "Utility Billing | City Of Pharr",
+    ],
     feedbackLabel: "Did this answer your question?",
   },
   {
     user: "¿Cómo solicito un permiso de construcción?",
     answer:
       "Puedes solicitar un permiso de construcción en el Departamento de Desarrollo. Necesitarás tus planos y la solicitud completa. ¿Te muestro los requisitos?",
-    sources: ["Permits & Licensing · City of Pharr", "+1 source"],
+    sources: [
+      "Building Permits | City Of Pharr",
+      "Development Services | City Of Pharr",
+    ],
     feedbackLabel: "¿Se resolvió tu pregunta?",
   },
   {
     user: "When is trash pickup on my street?",
     answer:
       "Trash is collected weekly — enter your address in the city's collection lookup to see your day and any holiday changes. Want the link?",
-    sources: ["Sanitation · City of Pharr", "Collection Schedule"],
+    sources: [
+      "Trash & Recycling Pickup | City Of Pharr",
+      "Sanitation Department | City Of Pharr",
+    ],
     feedbackLabel: "Did this answer your question?",
   },
   {
     user: "What are the public library hours?",
     answer:
       "The Pharr Memorial Library is open Mon–Thu 9 a.m.–8 p.m., Fri–Sat 9 a.m.–6 p.m., and closed Sundays. Anything else?",
-    sources: ["Pharr Memorial Library", "Hours & Locations"],
+    sources: [
+      "Library Hours & Locations | City Of Pharr",
+      "Pharr Memorial Library | City Of Pharr",
+    ],
     feedbackLabel: "Did this answer your question?",
   },
   {
     user: "¿Dónde puedo pagar una multa de tránsito?",
     answer:
       "Las multas de tránsito se pagan en línea o en el Juzgado Municipal. Necesitas tu número de citación. ¿Quieres el enlace de pago?",
-    sources: ["Municipal Court · City of Pharr", "Pay a Citation"],
+    sources: [
+      "Pay a Citation | City Of Pharr",
+      "Municipal Court | City Of Pharr",
+    ],
     feedbackLabel: "¿Se resolvió tu pregunta?",
   },
 ];
@@ -236,7 +254,7 @@ export function HeroChat({ maxW = "440px" }: { maxW?: string }) {
               <Flex key={m.id} direction="column" align="flex-start" gap="2">
                 <Box
                   className="cc-msg-in"
-                  maxW="88%"
+                  maxW="92%"
                   bg="bg.subtle"
                   color="fg"
                   px="3.5"
@@ -249,30 +267,26 @@ export function HeroChat({ maxW = "440px" }: { maxW?: string }) {
                   lineHeight="1.5"
                 >
                   {m.text}
+                  {m.sources && (
+                    <Stack gap="1" mt="2.5">
+                      {m.sources.map((s) => (
+                        <Text
+                          key={s}
+                          fontSize="xs"
+                          fontWeight="700"
+                          color="accent.fg"
+                          textDecoration="underline"
+                          textUnderlineOffset="2px"
+                          lineHeight="1.4"
+                          cursor="pointer"
+                          _hover={{ color: "accent.solid" }}
+                        >
+                          {s}
+                        </Text>
+                      ))}
+                    </Stack>
+                  )}
                 </Box>
-                {m.sources && (
-                  <HStack gap="2" flexWrap="wrap" pl="1">
-                    {m.sources.map((s) => (
-                      <HStack
-                        key={s}
-                        className="cc-msg-in"
-                        gap="1.5"
-                        px="2.5"
-                        py="1"
-                        rounded="full"
-                        bg="white"
-                        border="1px solid"
-                        borderColor="border"
-                        color="accent.fg"
-                        fontSize="11px"
-                        fontWeight="600"
-                      >
-                        <Box w="1.5" h="1.5" rounded="full" bg="accent.500" />
-                        {s}
-                      </HStack>
-                    ))}
-                  </HStack>
-                )}
               </Flex>
             ),
           )}

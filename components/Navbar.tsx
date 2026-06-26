@@ -103,7 +103,7 @@ export function Navbar() {
           display={{ base: "block", md: "none" }}
           borderTop="1px solid"
           borderColor="border"
-          bg="white"
+          bg="bg"
           px="4"
           py="4"
         >
