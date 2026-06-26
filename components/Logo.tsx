@@ -8,7 +8,7 @@ export function Logo({
 }) {
   return (
     <Image
-      src="/city-connect-logo.png"
+      src="/cityconnectlogo.png"
       alt="City Connect"
       h={h}
       w="auto"
