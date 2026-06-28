@@ -57,7 +57,7 @@ export function HowItWorks() {
                   color="white"
                   fontWeight="800"
                   fontSize="md"
-                  shadow="0 8px 20px -8px rgba(168,50,77,0.5)"
+                  shadow="0 8px 20px -8px rgba(124,58,237,0.5)"
                   ring="6px"
                   ringColor="bg"
                   flexShrink={0}

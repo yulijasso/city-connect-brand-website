@@ -12,16 +12,29 @@ import { Reveal } from "./Reveal";
 import { featureIcons } from "./icons";
 import { features } from "@/lib/content";
 
-const iconOrder = ["search", "globe", "link", "thumbs", "code", "shield"] as const;
+const iconOrder = [
+  "search",
+  "globe",
+  "link",
+  "thumbs",
+  "code",
+  "shield",
+  "chart",
+  "chat",
+  "gear",
+] as const;
 
-// A distinct earthy hue per feature (Earthy Rose palette).
+// A distinct vibrant hue per feature.
 const iconColors = [
-  { bg: "#fceef1", fg: "#a8324d", border: "#f4d3da", glow: "rgba(194,60,90,0.35)" }, // rose
-  { bg: "#e8eee9", fg: "#425749", border: "#d2ddd4", glow: "rgba(66,87,73,0.35)" }, // forest
-  { bg: "#f7ece5", fg: "#9c5f47", border: "#ecd6c9", glow: "rgba(213,161,142,0.45)" }, // terracotta
-  { bg: "#eef1ee", fg: "#566f60", border: "#d7e0d9", glow: "rgba(117,139,124,0.4)" }, // sage
-  { bg: "#f6ece9", fg: "#92645b", border: "#ecd8d2", glow: "rgba(222,195,190,0.5)" }, // blush
-  { bg: "#fbe7eb", fg: "#8a2940", border: "#f2cdd5", glow: "rgba(168,50,77,0.35)" }, // berry
+  { bg: "#ede9fe", fg: "#6d28d9", border: "#ddd6fe", glow: "rgba(124,58,237,0.4)" }, // violet
+  { bg: "#dbeafe", fg: "#1d4ed8", border: "#bfdbfe", glow: "rgba(37,99,235,0.4)" }, // blue
+  { bg: "#fce7f3", fg: "#be185d", border: "#fbcfe8", glow: "rgba(219,39,119,0.4)" }, // pink
+  { bg: "#fef3c7", fg: "#b45309", border: "#fde68a", glow: "rgba(217,119,6,0.4)" }, // amber
+  { bg: "#ccfbf1", fg: "#0f766e", border: "#99f6e4", glow: "rgba(13,148,136,0.4)" }, // teal
+  { bg: "#ffe4e6", fg: "#be123c", border: "#fecdd3", glow: "rgba(225,29,72,0.4)" }, // rose
+  { bg: "#e0e7ff", fg: "#4338ca", border: "#c7d2fe", glow: "rgba(79,70,229,0.4)" }, // indigo
+  { bg: "#cffafe", fg: "#0e7490", border: "#a5f3fc", glow: "rgba(8,145,178,0.4)" }, // cyan
+  { bg: "#ecfccb", fg: "#4d7c0f", border: "#d9f99d", glow: "rgba(101,163,13,0.4)" }, // lime
 ];
 
 export function Features() {

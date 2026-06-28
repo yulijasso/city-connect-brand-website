@@ -173,27 +173,13 @@ export function HeroChat({ maxW = "440px" }: { maxW?: string }) {
 
   return (
     <Box position="relative" w="full" maxW={maxW} mx="auto">
-      {/* soft green glow */}
-      <Box
-        className="cc-glow"
-        position="absolute"
-        inset="-12%"
-        bg="accent.400"
-        filter="blur(70px)"
-        rounded="full"
-        zIndex={0}
-        pointerEvents="none"
-      />
-
       <Box
         position="relative"
         zIndex={1}
-        rounded="l3"
+        rounded="l2"
         overflow="hidden"
         bg="white"
-        border="1px solid"
-        borderColor="border"
-        shadow="0 30px 70px -32px rgba(12,12,14,0.5), 0 4px 16px -8px rgba(12,12,14,0.15)"
+        shadow="0 30px 70px -32px rgba(12,12,14,0.45), 0 4px 16px -8px rgba(12,12,14,0.12)"
       >
         {/* browser chrome */}
         <HStack

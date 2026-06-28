@@ -298,16 +298,14 @@ export function BookDemoForm() {
         <Button
           type="submit"
           size="lg"
-          bgGradient="to-r"
-          gradientFrom="#c23c5a"
-          gradientTo="#a8324d"
+          bg="ink.900"
           color="white"
           rounded="l1"
           loading={status === "submitting"}
           loadingText="Sending…"
           transition="all 0.18s ease"
-          shadow="0 12px 26px -12px rgba(168,50,77,0.55)"
-          _hover={{ filter: "brightness(1.08)", transform: "translateY(-1px)" }}
+          shadow="0 12px 26px -14px rgba(10,10,12,0.5)"
+          _hover={{ bg: "ink.700", transform: "translateY(-1px)" }}
           _active={{ transform: "translateY(0)" }}
         >
           Book a demo
