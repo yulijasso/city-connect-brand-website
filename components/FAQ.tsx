@@ -12,9 +12,29 @@ export function FAQ() {
   return (
     <Box as="section" id="faq" py={{ base: "16", md: "24" }} bg="bg.subtle">
       <Container maxW="3xl">
-        <Reveal>
-          <SectionHeading eyebrow={faq.eyebrow} title={faq.title} />
-        </Reveal>
+        <Box position="relative">
+          {/* watercolor splash behind the heading */}
+          <Box
+            aria-hidden="true"
+            position="absolute"
+            top="50%"
+            left="50%"
+            transform="translate(-50%, -50%)"
+            w={{ base: "100%", md: "520px" }}
+            h={{ base: "150px", md: "180px" }}
+            backgroundImage="url('/explore/title-splash.png')"
+            backgroundSize="contain"
+            backgroundRepeat="no-repeat"
+            backgroundPosition="center"
+            zIndex={0}
+            pointerEvents="none"
+          />
+          <Box position="relative" zIndex={1}>
+            <Reveal>
+              <SectionHeading eyebrow={faq.eyebrow} title={faq.title} />
+            </Reveal>
+          </Box>
+        </Box>
         <Stack gap="3" mt={{ base: "10", md: "12" }}>
           {faq.items.map((item, i) => {
             const isOpen = open === i;
@@ -50,21 +70,26 @@ export function FAQ() {
                     <chakra.span>{item.q}</chakra.span>
                     <Box
                       flexShrink={0}
-                      color="fg.muted"
-                      transform={isOpen ? "rotate(45deg)" : "rotate(0deg)"}
-                      transition="transform 0.2s ease"
+                      color={isOpen ? "accent.fg" : "fg.subtle"}
+                      transform={isOpen ? "translateY(-2px)" : "none"}
+                      transition="color 0.2s ease, transform 0.2s ease"
                     >
                       <svg
-                        width="18"
-                        height="18"
+                        width="20"
+                        height="20"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        strokeWidth={1.8}
+                        strokeWidth={1.7}
                         strokeLinecap="round"
+                        strokeLinejoin="round"
                         aria-hidden="true"
                       >
-                        <path d="M12 5v14M5 12h14" />
+                        <path d="M3 21h18" />
+                        <path d="M5 21V10h5v11" />
+                        <path d="M12 21V5h7v16" />
+                        <path d="M7.5 13.5h0.5M7.5 16.5h0.5" />
+                        <path d="M15 9h0.5M15 12.5h0.5M15 16h0.5" />
                       </svg>
                     </Box>
                   </chakra.button>

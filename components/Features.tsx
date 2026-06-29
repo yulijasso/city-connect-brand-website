@@ -12,29 +12,62 @@ import { Reveal } from "./Reveal";
 import { featureIcons } from "./icons";
 import { features } from "@/lib/content";
 
-const iconOrder = ["search", "globe", "link", "thumbs", "code", "shield"] as const;
+const iconOrder = [
+  "search",
+  "globe",
+  "link",
+  "thumbs",
+  "code",
+  "shield",
+  "chart",
+  "chat",
+  "gear",
+] as const;
 
-// A distinct earthy hue per feature (Earthy Rose palette).
+// Minimal line icons sweeping the brand spectrum: violet → blue → cyan → green.
 const iconColors = [
-  { bg: "#fceef1", fg: "#a8324d", border: "#f4d3da", glow: "rgba(194,60,90,0.35)" }, // rose
-  { bg: "#e8eee9", fg: "#425749", border: "#d2ddd4", glow: "rgba(66,87,73,0.35)" }, // forest
-  { bg: "#f7ece5", fg: "#9c5f47", border: "#ecd6c9", glow: "rgba(213,161,142,0.45)" }, // terracotta
-  { bg: "#eef1ee", fg: "#566f60", border: "#d7e0d9", glow: "rgba(117,139,124,0.4)" }, // sage
-  { bg: "#f6ece9", fg: "#92645b", border: "#ecd8d2", glow: "rgba(222,195,190,0.5)" }, // blush
-  { bg: "#fbe7eb", fg: "#8a2940", border: "#f2cdd5", glow: "rgba(168,50,77,0.35)" }, // berry
+  "#7c3aed", // violet (brand)
+  "#6366f1", // indigo
+  "#3b82f6", // blue
+  "#0ea5e9", // sky
+  "#06b6d4", // cyan
+  "#0891b2", // deep cyan
+  "#0d9488", // teal
+  "#10b981", // emerald
+  "#059669", // green
 ];
 
 export function Features() {
   return (
     <Box as="section" id="features" py={{ base: "16", md: "24" }} bg="bg.subtle">
       <Container maxW="6xl">
-        <Reveal>
-          <SectionHeading
-            eyebrow={features.eyebrow}
-            title={features.title}
-            subtitle={features.subtitle}
+        <Box position="relative">
+          {/* watercolor splash behind the heading */}
+          <Box
+            aria-hidden="true"
+            position="absolute"
+            top="50%"
+            left="50%"
+            transform="translate(-50%, -50%)"
+            w={{ base: "130%", md: "900px" }}
+            h={{ base: "240px", md: "300px" }}
+            backgroundImage="url('/explore/title-splash.png')"
+            backgroundSize="contain"
+            backgroundRepeat="no-repeat"
+            backgroundPosition="center"
+            zIndex={0}
+            pointerEvents="none"
           />
-        </Reveal>
+          <Box position="relative" zIndex={1}>
+            <Reveal>
+              <SectionHeading
+                eyebrow={features.eyebrow}
+                title={features.title}
+                subtitle={features.subtitle}
+              />
+            </Reveal>
+          </Box>
+        </Box>
         <SimpleGrid
           columns={{ base: 1, md: 2, lg: 3 }}
           gap={{ base: "5", md: "6" }}
@@ -63,17 +96,10 @@ export function Features() {
                   }}
                 >
                   <Flex
-                    w="12"
-                    h="12"
                     align="center"
-                    justify="center"
-                    rounded="l1"
-                    bg={c.bg}
-                    border="1px solid"
-                    borderColor={c.border}
-                    color={c.fg}
-                    fontSize="22px"
-                    shadow={`0 6px 16px -6px ${c.glow}`}
+                    justify="flex-start"
+                    color={c}
+                    fontSize="28px"
                   >
                     <Icon />
                   </Flex>

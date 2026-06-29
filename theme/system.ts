@@ -1,14 +1,14 @@
 import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react";
 
 /**
- * "Earthy Rose" design system for City Connect.
- * Warm cream canvas, warm-neutral ink, a rose accent (#C23C5A), with
- * forest-green / sage / terracotta / blush as supporting earthy tones.
+ * Chatbase-inspired design system for City Connect.
+ * Clean white canvas, neutral black/grey ink, black primary buttons, with a
+ * vibrant violet accent and multi-color pops in decorative elements.
  */
 const config = defineConfig({
   globalCss: {
     "html, body": {
-      bg: "#fbf7f1",
+      bg: "white",
       color: "ink.900",
       fontFeatureSettings: '"cv11", "ss01"',
     },
@@ -26,37 +26,32 @@ const config = defineConfig({
         body: { value: "var(--font-inter), system-ui, sans-serif" },
       },
       colors: {
-        // Warm neutral ink scale
+        // Neutral ink scale (cool grey → near-black)
         ink: {
-          50: { value: "#f7f3ee" },
-          100: { value: "#ebe4da" },
-          200: { value: "#ddd2c4" },
-          300: { value: "#c0b3a3" },
-          400: { value: "#94887a" },
-          500: { value: "#6e6357" },
-          600: { value: "#4d4439" },
-          700: { value: "#352e26" },
-          800: { value: "#221d18" },
-          900: { value: "#15110d" },
+          50: { value: "#f7f7f8" },
+          100: { value: "#ececee" },
+          200: { value: "#d9d9de" },
+          300: { value: "#b8b8c0" },
+          400: { value: "#8a8a95" },
+          500: { value: "#5f5f6b" },
+          600: { value: "#414149" },
+          700: { value: "#2a2a30" },
+          800: { value: "#15151a" },
+          900: { value: "#0a0a0c" },
         },
-        // Rose accent (#C23C5A)
+        // Royal violet accent (anchored on #7c3aed)
         accent: {
-          50: { value: "#fceef1" },
-          100: { value: "#f7d8de" },
-          200: { value: "#eeb1bf" },
-          300: { value: "#e08498" },
-          400: { value: "#d15c76" },
-          500: { value: "#c23c5a" },
-          600: { value: "#a8324d" },
-          700: { value: "#8a2940" },
-          800: { value: "#6a1f30" },
-          900: { value: "#471521" },
+          50: { value: "#f5f3ff" },
+          100: { value: "#ede9fe" },
+          200: { value: "#ddd6fe" },
+          300: { value: "#c4b5fd" },
+          400: { value: "#a78bfa" },
+          500: { value: "#8b5cf6" },
+          600: { value: "#7c3aed" },
+          700: { value: "#6d28d9" },
+          800: { value: "#5b21b6" },
+          900: { value: "#4c1d95" },
         },
-        // Supporting earthy tones
-        forest: { value: "#425749" },
-        sage: { value: "#758b7c" },
-        clay: { value: "#d5a18e" },
-        blush: { value: "#dec3be" },
       },
       radii: {
         l1: { value: "0.625rem" },
@@ -67,9 +62,9 @@ const config = defineConfig({
     semanticTokens: {
       colors: {
         bg: {
-          DEFAULT: { value: "#fbf7f1" },
-          subtle: { value: "#f2ece2" },
-          inverse: { value: "{colors.forest}" },
+          DEFAULT: { value: "white" },
+          subtle: { value: "oklch(0.985 0 0)" },
+          inverse: { value: "{colors.ink.900}" },
         },
         fg: {
           DEFAULT: { value: "{colors.ink.900}" },
@@ -84,7 +79,7 @@ const config = defineConfig({
         accent: {
           solid: { value: "{colors.accent.600}" },
           contrast: { value: "white" },
-          fg: { value: "{colors.accent.700}" },
+          fg: { value: "{colors.accent.600}" },
           muted: { value: "{colors.accent.100}" },
           subtle: { value: "{colors.accent.50}" },
         },

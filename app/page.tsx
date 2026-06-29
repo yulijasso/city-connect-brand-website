@@ -5,6 +5,7 @@ import { LogoBar } from "@/components/LogoBar";
 import { Features } from "@/components/Features";
 import { HowItWorks } from "@/components/HowItWorks";
 import { UseCases } from "@/components/UseCases";
+import { PlatformShowcase } from "@/components/PlatformShowcase";
 import { DemoSection } from "@/components/DemoSection";
 import { FAQ } from "@/components/FAQ";
 import { CTASection } from "@/components/CTASection";
@@ -20,6 +21,7 @@ export default function Home() {
         <Features />
         <HowItWorks />
         <UseCases />
+        <PlatformShowcase />
         <DemoSection />
         <FAQ />
         <CTASection />

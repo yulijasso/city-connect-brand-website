@@ -22,8 +22,8 @@ export const hero = {
   primaryCta: { label: "Book a demo", href: "#demo" },
   secondaryCta: { label: "See it in action", href: "#demo" },
   stats: [
-    { value: "EN + ES", label: "Bilingual out of the box" },
-    { value: "24/7", label: "Always-on answers" },
+    { value: "EN + ES", label: "Built in, no setup" },
+    { value: "24/7", label: "Help, day or night" },
     { value: "1 line", label: "To embed on any site" },
   ],
 };
@@ -41,9 +41,9 @@ export const logoBar = {
 
 export const features = {
   eyebrow: "Why City Connect",
-  title: "Everything a resident needs to know, in one conversation.",
+  title: "For your residents — and the team behind them.",
   subtitle:
-    "Built for the cities residents rely on — accurate, multilingual answers they can trust, live in days.",
+    "An AI assistant residents talk to, plus a dashboard where your team manages conversations, tracks analytics, and customizes the widget — no code.",
   items: [
     {
       title: "No knowledge base to build",
@@ -74,6 +74,21 @@ export const features = {
       title: "Multi-tenant & secure",
       description:
         "Every city runs in its own isolated tenant — with per-city API keys, request quotas, and rate-limit protection built in from day one.",
+    },
+    {
+      title: "Analytics & insights",
+      description:
+        "A live dashboard tracks resolution rates, response times, SLA performance, and the questions residents ask most — so you can see what's working.",
+    },
+    {
+      title: "Conversation management",
+      description:
+        "Review every conversation, triage tickets by status, and escalate to the right department the moment a resident needs a human.",
+    },
+    {
+      title: "Configure it your way",
+      description:
+        "Set your city's colors, welcome message, and widget position from the dashboard — and run every city from one place.",
     },
   ],
 };
@@ -142,6 +157,39 @@ export const useCases = {
   ],
 };
 
+export const showcase = {
+  eyebrow: "Platform tour",
+  title: "Explore the City Connect platform",
+  // Add more screenshots to /public/explore and append slides here.
+  slides: [
+    {
+      label: "Admin dashboard",
+      icon: "sparkle",
+      src: "/explore/tech-admin-dashboard.jpeg",
+    },
+    {
+      label: "Cities",
+      icon: "globe",
+      src: "/explore/tech-admin-cities.jpeg",
+    },
+    {
+      label: "Conversations",
+      icon: "chat",
+      src: "/explore/city-conversations.jpeg",
+    },
+    {
+      label: "Analytics",
+      icon: "chart",
+      src: "/explore/city-analytics.jpeg",
+    },
+    {
+      label: "Branding",
+      icon: "gear",
+      src: "/explore/widget-branding.jpeg",
+    },
+  ],
+};
+
 export const demo = {
   eyebrow: "See it live",
   title: "Book a demo",
@@ -179,6 +227,10 @@ export const faq = {
     {
       q: "How accurate are the answers?",
       a: "Every answer cites the official pages it came from, and a built-in yes/no feedback loop surfaces gaps so the assistant keeps improving.",
+    },
+    {
+      q: "Can our team see analytics and manage conversations?",
+      a: "Yes. The City Connect dashboard gives your team live analytics (resolution rates, response times, SLA performance, top questions), a full conversation view to triage and escalate tickets, and controls to brand the widget and manage multiple cities — all in one place.",
     },
     {
       q: "How much does it cost?",

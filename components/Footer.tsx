@@ -11,7 +11,7 @@ import { footer } from "@/lib/content";
 
 export function Footer() {
   return (
-    <Box as="footer" borderTop="1px solid" borderColor="border" py={{ base: "12", md: "16" }}>
+    <Box as="footer" bg="ink.900" color="white" py={{ base: "14", md: "20" }}>
       <Container maxW="6xl">
         <Flex
           direction={{ base: "column", md: "row" }}
@@ -19,8 +19,8 @@ export function Footer() {
           gap={{ base: "10", md: "8" }}
         >
           <Stack gap="4" maxW="xs">
-            <Logo />
-            <Text fontSize="sm" color="fg.muted" lineHeight="1.6">
+            <Logo inverse />
+            <Text fontSize="sm" color="ink.400" lineHeight="1.6">
               {footer.tagline}
             </Text>
           </Stack>
@@ -33,7 +33,7 @@ export function Footer() {
                   fontWeight="700"
                   letterSpacing="0.08em"
                   textTransform="uppercase"
-                  color="fg.subtle"
+                  color="ink.500"
                 >
                   {col.title}
                 </Text>
@@ -42,8 +42,8 @@ export function Footer() {
                     key={l.label}
                     href={l.href}
                     fontSize="sm"
-                    color="fg.muted"
-                    _hover={{ color: "fg", textDecoration: "none" }}
+                    color="ink.300"
+                    _hover={{ color: "white", textDecoration: "none" }}
                   >
                     {l.label}
                   </CLink>
@@ -57,16 +57,16 @@ export function Footer() {
           mt={{ base: "10", md: "14" }}
           pt="6"
           borderTop="1px solid"
-          borderColor="border"
+          borderColor="whiteAlpha.200"
           direction={{ base: "column", sm: "row" }}
           gap="3"
           justify="space-between"
           align={{ base: "flex-start", sm: "center" }}
         >
-          <Text fontSize="xs" color="fg.subtle">
+          <Text fontSize="xs" color="ink.500">
             © {new Date().getFullYear()} {footer.brand}. All rights reserved.
           </Text>
-          <Text fontSize="xs" color="fg.subtle">
+          <Text fontSize="xs" color="ink.500">
             AI-powered resident engagement.
           </Text>
         </Flex>

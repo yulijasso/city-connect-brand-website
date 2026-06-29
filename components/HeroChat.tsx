@@ -15,6 +15,13 @@ type Message = {
 
 const GREETING = "Hi! Ask me anything about city services.";
 
+// Feedback prompt + affirm/deny labels, matched to the question's language.
+const FEEDBACK = {
+  en: { label: "Did this answer your question?", yes: "Yes", no: "No" },
+  es: { label: "¿Se resolvió tu pregunta?", yes: "Sí", no: "No" },
+} as const;
+type Lang = keyof typeof FEEDBACK;
+
 const CONVERSATIONS = [
   {
     user: "¿Cuáles son los horarios del juzgado municipal?",
@@ -24,7 +31,7 @@ const CONVERSATIONS = [
       "Municipal Court | City Of Pharr",
       "Court Hours & Holidays | City Of Pharr",
     ],
-    feedbackLabel: "¿Se resolvió tu pregunta?",
+    lang: "es",
   },
   {
     user: "How do I pay my water bill online?",
@@ -34,7 +41,7 @@ const CONVERSATIONS = [
       "Pay Your Water Bill | City Of Pharr",
       "Utility Billing | City Of Pharr",
     ],
-    feedbackLabel: "Did this answer your question?",
+    lang: "en",
   },
   {
     user: "¿Cómo solicito un permiso de construcción?",
@@ -44,7 +51,7 @@ const CONVERSATIONS = [
       "Building Permits | City Of Pharr",
       "Development Services | City Of Pharr",
     ],
-    feedbackLabel: "¿Se resolvió tu pregunta?",
+    lang: "es",
   },
   {
     user: "When is trash pickup on my street?",
@@ -54,7 +61,7 @@ const CONVERSATIONS = [
       "Trash & Recycling Pickup | City Of Pharr",
       "Sanitation Department | City Of Pharr",
     ],
-    feedbackLabel: "Did this answer your question?",
+    lang: "en",
   },
   {
     user: "What are the public library hours?",
@@ -64,7 +71,7 @@ const CONVERSATIONS = [
       "Library Hours & Locations | City Of Pharr",
       "Pharr Memorial Library | City Of Pharr",
     ],
-    feedbackLabel: "Did this answer your question?",
+    lang: "en",
   },
   {
     user: "¿Dónde puedo pagar una multa de tránsito?",
@@ -74,7 +81,7 @@ const CONVERSATIONS = [
       "Pay a Citation | City Of Pharr",
       "Municipal Court | City Of Pharr",
     ],
-    feedbackLabel: "¿Se resolvió tu pregunta?",
+    lang: "es",
   },
 ];
 
@@ -85,7 +92,9 @@ export function HeroChat({ maxW = "440px" }: { maxW?: string }) {
   ]);
   const [typing, setTyping] = useState(false);
   const [typingUserId, setTypingUserId] = useState<string | null>(null);
-  const [feedbackLabel, setFeedbackLabel] = useState<string | null>(null);
+  const [feedback, setFeedback] = useState<(typeof FEEDBACK)[Lang] | null>(
+    null,
+  );
   const scrollRef = useRef<HTMLDivElement>(null);
 
   // auto-scroll to the latest message
@@ -109,7 +118,7 @@ export function HeroChat({ maxW = "440px" }: { maxW?: string }) {
           feedback: true,
         },
       ]);
-      setFeedbackLabel(c.feedbackLabel);
+      setFeedback(FEEDBACK[c.lang as Lang]);
       return;
     }
 
@@ -135,7 +144,7 @@ export function HeroChat({ maxW = "440px" }: { maxW?: string }) {
         for (const c of CONVERSATIONS) {
           if (cancelled) return;
           setMessages([{ id: "greeting", role: "assistant", text: GREETING }]);
-          setFeedbackLabel(null);
+          setFeedback(null);
           await sleep(1000);
           if (cancelled) return;
 
@@ -159,7 +168,7 @@ export function HeroChat({ maxW = "440px" }: { maxW?: string }) {
             },
           ]);
           await sleep(700);
-          setFeedbackLabel(c.feedbackLabel);
+          setFeedback(FEEDBACK[c.lang as Lang]);
           await sleep(4200);
         }
       }
@@ -173,27 +182,13 @@ export function HeroChat({ maxW = "440px" }: { maxW?: string }) {
 
   return (
     <Box position="relative" w="full" maxW={maxW} mx="auto">
-      {/* soft green glow */}
-      <Box
-        className="cc-glow"
-        position="absolute"
-        inset="-12%"
-        bg="accent.400"
-        filter="blur(70px)"
-        rounded="full"
-        zIndex={0}
-        pointerEvents="none"
-      />
-
       <Box
         position="relative"
         zIndex={1}
-        rounded="l3"
+        rounded="l2"
         overflow="hidden"
         bg="white"
-        border="1px solid"
-        borderColor="border"
-        shadow="0 30px 70px -32px rgba(12,12,14,0.5), 0 4px 16px -8px rgba(12,12,14,0.15)"
+        shadow="0 30px 70px -32px rgba(12,12,14,0.45), 0 4px 16px -8px rgba(12,12,14,0.12)"
       >
         {/* browser chrome */}
         <HStack
@@ -221,7 +216,7 @@ export function HeroChat({ maxW = "440px" }: { maxW?: string }) {
         {/* messages */}
         <Box
           ref={scrollRef}
-          h={{ base: "260px", sm: "320px" }}
+          h={{ base: "320px", sm: "400px" }}
           overflow="hidden"
           px="4"
           py="5"
@@ -319,7 +314,7 @@ export function HeroChat({ maxW = "440px" }: { maxW?: string }) {
             </Flex>
           )}
 
-          {feedbackLabel && (
+          {feedback && (
             <Flex
               className="cc-msg-in"
               align="center"
@@ -328,11 +323,11 @@ export function HeroChat({ maxW = "440px" }: { maxW?: string }) {
               pt="0.5"
             >
               <Text fontSize="xs" color="fg.muted">
-                {feedbackLabel}
+                {feedback.label}
               </Text>
               <HStack gap="1.5">
-                <Pill>✓ Sí</Pill>
-                <Pill muted>✕ No</Pill>
+                <Pill>✓ {feedback.yes}</Pill>
+                <Pill muted>✕ {feedback.no}</Pill>
               </HStack>
             </Flex>
           )}

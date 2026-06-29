@@ -69,16 +69,14 @@ export function Navbar() {
           <HStack gap="3" display={{ base: "none", md: "flex" }}>
             <Button
               asChild
-              bgGradient="to-r"
-              gradientFrom="#c23c5a"
-              gradientTo="#a8324d"
+              bg="ink.900"
               color="white"
               size="sm"
               rounded="l1"
               px="5"
               transition="all 0.18s ease"
-              shadow="0 8px 18px -8px rgba(168,50,77,0.55)"
-              _hover={{ filter: "brightness(1.08)", transform: "translateY(-1px)" }}
+              shadow="0 8px 18px -10px rgba(10,10,12,0.5)"
+              _hover={{ bg: "ink.700", transform: "translateY(-1px)" }}
               _active={{ transform: "translateY(0)" }}
             >
               <a href={nav.cta.href}>{nav.cta.label}</a>
@@ -124,13 +122,11 @@ export function Navbar() {
             <Button
               asChild
               mt="2"
-              bgGradient="to-r"
-              gradientFrom="#c23c5a"
-              gradientTo="#a8324d"
+              bg="ink.900"
               color="white"
               rounded="l1"
               w="full"
-              _hover={{ filter: "brightness(1.08)" }}
+              _hover={{ bg: "ink.700" }}
             >
               <a href={nav.cta.href} onClick={() => setOpen(false)}>
                 {nav.cta.label}
