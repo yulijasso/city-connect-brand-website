@@ -176,7 +176,7 @@ export function PlatformShowcase() {
           {/* application window */}
           <Box
             w="full"
-            maxW={{ base: "full", md: "4xl" }}
+            maxW={{ base: "full", md: "6xl" }}
             mx="auto"
             rounded="l2"
             overflow="hidden"
