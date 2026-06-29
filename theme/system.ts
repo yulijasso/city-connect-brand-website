@@ -63,7 +63,7 @@ const config = defineConfig({
       colors: {
         bg: {
           DEFAULT: { value: "white" },
-          subtle: { value: "{colors.ink.50}" },
+          subtle: { value: "oklch(0.985 0 0)" },
           inverse: { value: "{colors.ink.900}" },
         },
         fg: {

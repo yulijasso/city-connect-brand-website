@@ -23,7 +23,7 @@ export function Hero() {
       borderColor="border"
       bg="white"
     >
-      <Container maxW="6xl" position="relative" py={{ base: "16", md: "24" }}>
+      <Container maxW="6xl" position="relative" py={{ base: "32", md: "52" }}>
         <SimpleGrid
           columns={{ base: 1, lg: 2 }}
           gap={{ base: "12", lg: "16" }}
@@ -33,9 +33,9 @@ export function Hero() {
             <Stack gap="6" maxW="2xl">
               <Heading
                 as="h1"
-                fontSize={{ base: "4xl", md: "5xl", lg: "6xl" }}
-                lineHeight="1.05"
-                letterSpacing="-0.03em"
+                fontSize={{ base: "5xl", md: "6xl", lg: "7xl" }}
+                lineHeight="1.02"
+                letterSpacing="-0.035em"
                 fontWeight="800"
                 backgroundImage="url('/explore/background-carousel2.png')"
                 backgroundSize="cover"

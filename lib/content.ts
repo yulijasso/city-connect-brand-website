@@ -158,8 +158,8 @@ export const useCases = {
 };
 
 export const showcase = {
-  eyebrow: "Explore",
-  title: "Discover the City Connect platform",
+  eyebrow: "Platform tour",
+  title: "Explore the City Connect platform",
   // Add more screenshots to /public/explore and append slides here.
   slides: [
     {

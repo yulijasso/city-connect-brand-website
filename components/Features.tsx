@@ -41,13 +41,33 @@ export function Features() {
   return (
     <Box as="section" id="features" py={{ base: "16", md: "24" }} bg="bg.subtle">
       <Container maxW="6xl">
-        <Reveal>
-          <SectionHeading
-            eyebrow={features.eyebrow}
-            title={features.title}
-            subtitle={features.subtitle}
+        <Box position="relative">
+          {/* watercolor splash behind the heading */}
+          <Box
+            aria-hidden="true"
+            position="absolute"
+            top="50%"
+            left="50%"
+            transform="translate(-50%, -50%)"
+            w={{ base: "130%", md: "900px" }}
+            h={{ base: "240px", md: "300px" }}
+            backgroundImage="url('/explore/title-splash.png')"
+            backgroundSize="contain"
+            backgroundRepeat="no-repeat"
+            backgroundPosition="center"
+            zIndex={0}
+            pointerEvents="none"
           />
-        </Reveal>
+          <Box position="relative" zIndex={1}>
+            <Reveal>
+              <SectionHeading
+                eyebrow={features.eyebrow}
+                title={features.title}
+                subtitle={features.subtitle}
+              />
+            </Reveal>
+          </Box>
+        </Box>
         <SimpleGrid
           columns={{ base: 1, md: 2, lg: 3 }}
           gap={{ base: "5", md: "6" }}

@@ -12,9 +12,29 @@ export function FAQ() {
   return (
     <Box as="section" id="faq" py={{ base: "16", md: "24" }} bg="bg.subtle">
       <Container maxW="3xl">
-        <Reveal>
-          <SectionHeading eyebrow={faq.eyebrow} title={faq.title} />
-        </Reveal>
+        <Box position="relative">
+          {/* watercolor splash behind the heading */}
+          <Box
+            aria-hidden="true"
+            position="absolute"
+            top="50%"
+            left="50%"
+            transform="translate(-50%, -50%)"
+            w={{ base: "100%", md: "520px" }}
+            h={{ base: "150px", md: "180px" }}
+            backgroundImage="url('/explore/title-splash.png')"
+            backgroundSize="contain"
+            backgroundRepeat="no-repeat"
+            backgroundPosition="center"
+            zIndex={0}
+            pointerEvents="none"
+          />
+          <Box position="relative" zIndex={1}>
+            <Reveal>
+              <SectionHeading eyebrow={faq.eyebrow} title={faq.title} />
+            </Reveal>
+          </Box>
+        </Box>
         <Stack gap="3" mt={{ base: "10", md: "12" }}>
           {faq.items.map((item, i) => {
             const isOpen = open === i;
