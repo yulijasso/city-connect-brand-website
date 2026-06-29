@@ -168,9 +168,9 @@ export const showcase = {
       src: "/explore/tech-admin-dashboard.jpeg",
     },
     {
-      label: "Analytics",
-      icon: "chart",
-      src: "/explore/city-analytics.jpeg",
+      label: "Cities",
+      icon: "globe",
+      src: "/explore/tech-admin-cities.jpeg",
     },
     {
       label: "Conversations",
@@ -178,14 +178,14 @@ export const showcase = {
       src: "/explore/city-conversations.jpeg",
     },
     {
+      label: "Analytics",
+      icon: "chart",
+      src: "/explore/city-analytics.jpeg",
+    },
+    {
       label: "Branding",
       icon: "gear",
       src: "/explore/widget-branding.jpeg",
-    },
-    {
-      label: "Cities",
-      icon: "globe",
-      src: "/explore/tech-admin-cities.jpeg",
     },
   ],
 };
