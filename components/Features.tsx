@@ -24,17 +24,17 @@ const iconOrder = [
   "gear",
 ] as const;
 
-// A distinct vibrant hue per feature.
+// Minimal: a bare line icon, each in its own vibrant hue — color pops, no tile.
 const iconColors = [
-  { bg: "#ede9fe", fg: "#6d28d9", border: "#ddd6fe", glow: "rgba(124,58,237,0.4)" }, // violet
-  { bg: "#dbeafe", fg: "#1d4ed8", border: "#bfdbfe", glow: "rgba(37,99,235,0.4)" }, // blue
-  { bg: "#fce7f3", fg: "#be185d", border: "#fbcfe8", glow: "rgba(219,39,119,0.4)" }, // pink
-  { bg: "#fef3c7", fg: "#b45309", border: "#fde68a", glow: "rgba(217,119,6,0.4)" }, // amber
-  { bg: "#ccfbf1", fg: "#0f766e", border: "#99f6e4", glow: "rgba(13,148,136,0.4)" }, // teal
-  { bg: "#ffe4e6", fg: "#be123c", border: "#fecdd3", glow: "rgba(225,29,72,0.4)" }, // rose
-  { bg: "#e0e7ff", fg: "#4338ca", border: "#c7d2fe", glow: "rgba(79,70,229,0.4)" }, // indigo
-  { bg: "#cffafe", fg: "#0e7490", border: "#a5f3fc", glow: "rgba(8,145,178,0.4)" }, // cyan
-  { bg: "#ecfccb", fg: "#4d7c0f", border: "#d9f99d", glow: "rgba(101,163,13,0.4)" }, // lime
+  "#7c3aed", // violet
+  "#2563eb", // blue
+  "#0891b2", // cyan
+  "#db2777", // pink
+  "#ea580c", // orange
+  "#059669", // emerald
+  "#c026d3", // fuchsia
+  "#e11d48", // rose
+  "#d97706", // amber
 ];
 
 export function Features() {
@@ -76,17 +76,10 @@ export function Features() {
                   }}
                 >
                   <Flex
-                    w="12"
-                    h="12"
                     align="center"
-                    justify="center"
-                    rounded="l1"
-                    bg={c.bg}
-                    border="1px solid"
-                    borderColor={c.border}
-                    color={c.fg}
-                    fontSize="22px"
-                    shadow={`0 6px 16px -6px ${c.glow}`}
+                    justify="flex-start"
+                    color={c}
+                    fontSize="28px"
                   >
                     <Icon />
                   </Flex>

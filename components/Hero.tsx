@@ -37,6 +37,12 @@ export function Hero() {
                 lineHeight="1.05"
                 letterSpacing="-0.03em"
                 fontWeight="800"
+                backgroundImage="url('/explore/background-carousel2.png')"
+                backgroundSize="cover"
+                backgroundPosition="center"
+                backgroundClip="text"
+                color="transparent"
+                css={{ WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
               >
                 {hero.title}
               </Heading>
@@ -107,16 +113,15 @@ export function Hero() {
             </Stack>
           </Reveal>
 
-          {/* Product mockup on a vibrant gradient panel (chatbase-style) */}
+          {/* Product mockup on a vibrant cool-spectrum gradient panel */}
           <Reveal delay={120}>
             <Box
               borderRadius="2rem"
               p={{ base: "5", md: "8" }}
-              bgGradient="to-br"
-              gradientFrom="#f871a0"
-              gradientVia="#fb8a7a"
-              gradientTo="#fdbb6e"
-              shadow="0 40px 90px -45px rgba(248,113,160,0.7)"
+              backgroundImage="url('/explore/background-carousel2.png')"
+              backgroundSize="cover"
+              backgroundPosition="center"
+              shadow="0 40px 90px -45px rgba(59,130,246,0.6)"
             >
               <HeroChat maxW="full" />
             </Box>

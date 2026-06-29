@@ -54,9 +54,10 @@ export function UseCases() {
                   align="center"
                   justify="center"
                   rounded="full"
-                  bg="accent.600"
+                  backgroundImage="linear-gradient(135deg, #d44be0, #8b5cf6)"
                   color="white"
                   fontSize="15px"
+                  shadow="0 6px 14px -6px rgba(180,80,225,0.55)"
                 >
                   <CheckIcon />
                 </Flex>

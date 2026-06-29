@@ -50,21 +50,26 @@ export function FAQ() {
                     <chakra.span>{item.q}</chakra.span>
                     <Box
                       flexShrink={0}
-                      color="fg.muted"
-                      transform={isOpen ? "rotate(45deg)" : "rotate(0deg)"}
-                      transition="transform 0.2s ease"
+                      color={isOpen ? "accent.fg" : "fg.subtle"}
+                      transform={isOpen ? "translateY(-2px)" : "none"}
+                      transition="color 0.2s ease, transform 0.2s ease"
                     >
                       <svg
-                        width="18"
-                        height="18"
+                        width="20"
+                        height="20"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        strokeWidth={1.8}
+                        strokeWidth={1.7}
                         strokeLinecap="round"
+                        strokeLinejoin="round"
                         aria-hidden="true"
                       >
-                        <path d="M12 5v14M5 12h14" />
+                        <path d="M3 21h18" />
+                        <path d="M5 21V10h5v11" />
+                        <path d="M12 21V5h7v16" />
+                        <path d="M7.5 13.5h0.5M7.5 16.5h0.5" />
+                        <path d="M15 9h0.5M15 12.5h0.5M15 16h0.5" />
                       </svg>
                     </Box>
                   </chakra.button>

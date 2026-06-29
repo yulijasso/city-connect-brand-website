@@ -29,9 +29,9 @@ export function HowItWorks() {
             right="16%"
             h="2px"
             bgGradient="to-r"
-            gradientFrom="accent.200"
-            gradientVia="accent.300"
-            gradientTo="accent.200"
+            gradientFrom="#f0abfc"
+            gradientVia="#c4b5fd"
+            gradientTo="#f0abfc"
             zIndex={0}
           />
           <SimpleGrid columns={{ base: 1, md: 3 }} gap={{ base: "10", md: "8" }}>
@@ -53,11 +53,11 @@ export function HowItWorks() {
                   align="center"
                   justify="center"
                   rounded="full"
-                  bg="accent.600"
+                  backgroundImage="linear-gradient(135deg, #d44be0, #8b5cf6)"
                   color="white"
                   fontWeight="800"
                   fontSize="md"
-                  shadow="0 8px 20px -8px rgba(124,58,237,0.5)"
+                  shadow="0 8px 20px -8px rgba(180,80,225,0.55)"
                   ring="6px"
                   ringColor="bg"
                   flexShrink={0}

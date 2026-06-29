@@ -73,7 +73,12 @@ export function PlatformShowcase() {
 
         {/* slide tabs */}
         {slides.length > 1 && (
-          <HStack gap={{ base: "5", md: "7" }} mt={{ base: "8", md: "10" }} flexWrap="wrap">
+          <HStack
+            gap={{ base: "5", md: "7" }}
+            mt={{ base: "8", md: "10" }}
+            flexWrap="wrap"
+            justify="center"
+          >
             {slides.map((s, i) => {
               const Icon = showcaseIcons[s.icon as keyof typeof showcaseIcons];
               return (
@@ -115,7 +120,7 @@ export function PlatformShowcase() {
             position="relative"
             rounded="2rem"
             p={{ base: "8", md: "16" }}
-            backgroundImage="url('/explore/background-carousel.png')"
+            backgroundImage="url('/explore/background-carousel3.png')"
             backgroundSize="cover"
             backgroundPosition="center"
             shadow="0 40px 100px -40px rgba(0,0,0,0.8)"
