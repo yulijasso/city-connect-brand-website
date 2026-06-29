@@ -24,17 +24,17 @@ const iconOrder = [
   "gear",
 ] as const;
 
-// Minimal: a bare line icon, each in its own vibrant hue — color pops, no tile.
+// Minimal line icons sweeping the brand spectrum: violet → blue → cyan → green.
 const iconColors = [
-  "#7c3aed", // violet
-  "#2563eb", // blue
-  "#0891b2", // cyan
-  "#db2777", // pink
-  "#ea580c", // orange
-  "#059669", // emerald
-  "#c026d3", // fuchsia
-  "#e11d48", // rose
-  "#d97706", // amber
+  "#7c3aed", // violet (brand)
+  "#6366f1", // indigo
+  "#3b82f6", // blue
+  "#0ea5e9", // sky
+  "#06b6d4", // cyan
+  "#0891b2", // deep cyan
+  "#0d9488", // teal
+  "#10b981", // emerald
+  "#059669", // green
 ];
 
 export function Features() {

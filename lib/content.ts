@@ -22,8 +22,8 @@ export const hero = {
   primaryCta: { label: "Book a demo", href: "#demo" },
   secondaryCta: { label: "See it in action", href: "#demo" },
   stats: [
-    { value: "EN + ES", label: "Bilingual out of the box" },
-    { value: "24/7", label: "Always-on answers" },
+    { value: "EN + ES", label: "Built in, no setup" },
+    { value: "24/7", label: "Help, day or night" },
     { value: "1 line", label: "To embed on any site" },
   ],
 };

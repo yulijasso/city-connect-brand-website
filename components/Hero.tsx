@@ -19,8 +19,6 @@ export function Hero() {
       id="top"
       position="relative"
       overflow="hidden"
-      borderBottom="1px solid"
-      borderColor="border"
       bg="white"
     >
       <Container maxW="6xl" position="relative" py={{ base: "32", md: "52" }}>
@@ -94,22 +92,37 @@ export function Hero() {
                 </Button>
               </Stack>
 
-              <SimpleGrid columns={3} gap="4" pt="6" maxW="lg">
-                {hero.stats.map((s) => (
-                  <Stack key={s.label} gap="0.5">
+              <Stack direction="row" gap="0" pt="8" align="center">
+                {hero.stats.map((s, i) => (
+                  <Stack
+                    key={s.label}
+                    gap="1"
+                    pl={i === 0 ? "0" : { base: "5", md: "8" }}
+                    pr={
+                      i === hero.stats.length - 1 ? "0" : { base: "5", md: "8" }
+                    }
+                    borderLeft={i === 0 ? undefined : "1px solid"}
+                    borderColor="border"
+                  >
                     <Text
-                      fontSize={{ base: "xl", md: "2xl" }}
+                      fontSize={{ base: "2xl", md: "3xl" }}
                       fontWeight="800"
-                      letterSpacing="-0.02em"
+                      letterSpacing="-0.03em"
+                      lineHeight="1"
                     >
                       {s.value}
                     </Text>
-                    <Text fontSize="xs" color="fg.muted" lineHeight="1.3">
+                    <Text
+                      fontSize="xs"
+                      color="fg.muted"
+                      lineHeight="1.3"
+                      maxW="32"
+                    >
                       {s.label}
                     </Text>
                   </Stack>
                 ))}
-              </SimpleGrid>
+              </Stack>
             </Stack>
           </Reveal>
 
