@@ -48,7 +48,6 @@ export const metadata: Metadata = {
     title: "City Connect — AI-Powered Resident Engagement",
     description,
   },
-  icons: { icon: "/favicon.ico" },
 };
 
 export default function RootLayout({
